@@ -1,0 +1,355 @@
+.goalkeeper-piece {
+  position: relative;
+  z-index: 1;
+  width: 280px;
+  gap: 16px;
+  padding: 16px 24px;
+  border: 1px solid rgba(47, 61, 43, 0.22);
+  border-radius: 5px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.2)),
+    var(--team-goalkeeper-base);
+  color: var(--team-goalkeeper-mark);
+  box-shadow: 0 15px 24px rgba(10, 37, 23, 0.2);
+}
+
+.goalkeeper-badge {
+  display: grid;
+  justify-self: center;
+  width: 78px;
+  height: 58px;
+  place-items: center;
+  border: 3px solid currentColor;
+  border-radius: 42% 42% 48% 48%;
+  font-size: 0.92rem;
+  font-weight: 900;
+}
+
+.goalkeeper-number {
+  justify-self: end;
+  font-size: 3rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.goalkeeper-piece h3,
+.button-label h3,
+.reserve-copy h3 {
+  margin-bottom: 2px;
+  overflow-wrap: anywhere;
+  line-height: 1.08;
+}
+
+.goalkeeper-piece h3 {
+  position: absolute;
+  left: 50%;
+  bottom: -34px;
+  z-index: 4;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 253, 245, 0.96);
+  color: var(--ink);
+  font-size: 0.92rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%) translateY(6px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.goalkeeper-piece p,
+.button-label p,
+.reserve-copy p {
+  margin: 0;
+  color: rgba(16, 35, 29, 0.7);
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.goalkeeper-piece p {
+  display: none;
+}
+
+.goalkeeper-piece:hover h3,
+.goalkeeper-piece:focus-within h3 {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.button-player {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: clamp(106px, 9.15vw, 136px);
+  min-width: 0;
+  color: #ffffff;
+  text-align: center;
+}
+
+.player-dimmed {
+  opacity: 0.28;
+  filter: saturate(0.7);
+  transition: opacity 140ms ease, filter 140ms ease;
+}
+
+.player-dimmed:hover,
+.player-dimmed:focus-within {
+  opacity: 0.58;
+  filter: saturate(0.85);
+}
+
+.button-disc,
+.reserve-disc {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 45% 38%, rgba(255, 255, 255, 0.14), transparent 42%),
+    linear-gradient(160deg, var(--team-button-face) 0%, var(--team-button-face) 54%, var(--team-button-face-dark) 100%);
+  color: var(--team-button-mark);
+  box-shadow:
+    inset -4px -7px 8px rgba(8, 43, 27, 0.28),
+    inset 3px 4px 8px rgba(255, 255, 255, 0.12),
+    0 9px 0 var(--team-button-side),
+    0 16px 18px rgba(7, 28, 18, 0.28);
+}
+
+.button-disc {
+  width: clamp(104px, 9.5vw, 138px);
+  height: clamp(104px, 9.5vw, 138px);
+}
+
+.button-disc::after,
+.reserve-disc::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: inherit;
+}
+
+.button-badge {
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  z-index: 1;
+  display: grid;
+  width: 34px;
+  height: 40px;
+  place-items: center;
+  border: 3px solid currentColor;
+  border-radius: 9px 9px 13px 13px;
+  font-size: 0;
+  font-weight: 950;
+  transform: translateX(-50%);
+}
+
+.button-badge::before,
+.button-badge::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.button-badge::before {
+  width: 4px;
+  height: 25px;
+}
+
+.button-badge::after {
+  width: 22px;
+  height: 4px;
+}
+
+.button-number {
+  position: absolute;
+  top: 61%;
+  left: 50%;
+  z-index: 1;
+  color: var(--team-button-number);
+  font-size: 1.45rem;
+  font-weight: 950;
+  line-height: 1;
+  transform: translateX(-50%);
+}
+
+.button-label {
+  position: absolute;
+  z-index: 4;
+  right: 50%;
+  bottom: -34px;
+  width: 100%;
+  min-height: 45px;
+  margin-top: 0;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255, 253, 245, 0.96);
+  color: var(--ink);
+  opacity: 0;
+  text-shadow: none;
+  transform: translate(50%, 6px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.button-label h3 {
+  font-size: 0.86rem;
+}
+
+.button-label p {
+  color: var(--muted);
+}
+
+.button-player:hover .button-label,
+.button-player:focus-within .button-label {
+  opacity: 1;
+  transform: translate(50%, 0);
+}
+
+.reserve-slot {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #d5c8ad;
+  border-radius: 6px;
+  background: #fffaf0;
+  box-shadow: inset 0 0 0 2px rgba(215, 208, 189, 0.36);
+}
+
+.reserve-disc {
+  width: 72px;
+  height: 72px;
+  grid-row: span 2;
+}
+
+.reserve-disc .button-badge {
+  width: 22px;
+  height: 26px;
+  border-width: 2px;
+}
+
+.reserve-disc .button-badge::before {
+  width: 3px;
+  height: 16px;
+}
+
+.reserve-disc .button-badge::after {
+  width: 14px;
+  height: 3px;
+}
+
+.reserve-disc .button-number {
+  font-size: 1.05rem;
+}
+
+.reserve-copy {
+  min-width: 0;
+  align-self: center;
+}
+
+.reserve-copy h3 {
+  color: var(--ink);
+  font-size: 0.94rem;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin: 10px 0 0;
+}
+
+.button-player > .stat-row,
+.reserve-slot > .stat-row,
+.goalkeeper-piece > .stat-row {
+  position: absolute;
+  z-index: 4;
+  right: 50%;
+  bottom: -88px;
+  width: min(180px, 150%);
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(50%, 8px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.button-player:hover > .stat-row,
+.button-player:focus-within > .stat-row,
+.reserve-slot:hover > .stat-row,
+.reserve-slot:focus-within > .stat-row,
+.goalkeeper-piece:hover > .stat-row,
+.goalkeeper-piece:focus-within > .stat-row {
+  opacity: 1;
+  transform: translate(50%, 0);
+}
+
+.stat-row div {
+  min-width: 0;
+  padding: 7px 6px;
+  border: 1px solid rgba(16, 35, 29, 0.1);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.72);
+  text-align: center;
+}
+
+.stat-row dt {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.stat-row dd {
+  margin: 3px 0 0;
+  color: var(--ink);
+  font-size: 0.96rem;
+  font-weight: 850;
+}
+
+@media (max-width: 1120px) {
+  .button-player {
+    width: 124px;
+  }
+
+  .button-disc {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 760px) {
+  .goalkeeper-piece {
+    grid-template-columns: auto auto;
+    width: min(100%, 280px);
+  }
+
+  .goalkeeper-piece .stat-row {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 420px) {
+  .button-player {
+    width: 104px;
+  }
+
+  .button-disc {
+    width: 94px;
+    height: 94px;
+  }
+
+  .button-badge {
+    width: 34px;
+    height: 26px;
+  }
+
+  .button-number {
+    font-size: 1.5rem;
+  }
+}

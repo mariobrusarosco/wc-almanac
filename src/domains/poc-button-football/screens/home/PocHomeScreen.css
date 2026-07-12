@@ -1,0 +1,170 @@
+.poc-home-shell {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  padding: 0;
+  overflow: hidden;
+  background: #88bdcb;
+}
+
+.poc-home-poster {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #88bdcb;
+  color: #4d5054;
+  font-family: var(--font-display);
+}
+
+.poc-home-spine {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: clamp(86px, 9.2vw, 132px);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.46), transparent 30%),
+    #f8eedc;
+}
+
+.poc-home-spine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 28px;
+  width: 10px;
+  background: linear-gradient(90deg, transparent, rgba(184, 164, 125, 0.22), transparent);
+  filter: blur(3px);
+}
+
+.poc-home-meta {
+  position: absolute;
+  top: clamp(58px, 7vw, 96px);
+  right: clamp(42px, 5.5vw, 80px);
+  left: clamp(160px, 15vw, 220px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  font-size: clamp(1.22rem, 2.1vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.poc-home-meta-line {
+  height: 3px;
+  background: currentColor;
+}
+
+.poc-home-open {
+  position: absolute;
+  left: clamp(170px, 16vw, 246px);
+  bottom: clamp(58px, 8vw, 96px);
+  display: inline-grid;
+  min-width: 126px;
+  min-height: 86px;
+  place-items: center;
+  border: 4px solid currentColor;
+  color: #4d5054;
+  font-size: clamp(1.3rem, 2.1vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.poc-home-open:hover,
+.poc-home-open:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+}
+
+.poc-home-title-block {
+  position: absolute;
+  right: clamp(160px, 14vw, 250px);
+  bottom: clamp(56px, 7vw, 90px);
+  z-index: 1;
+}
+
+.poc-home-title-block h1 {
+  display: grid;
+  margin: 0;
+  color: #4d5054;
+  font-size: clamp(4.2rem, 7.5vw, 7.8rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.poc-home-title-block h1 span:last-child {
+  justify-self: end;
+  font-size: 0.55em;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.poc-home-cup {
+  position: absolute;
+  right: clamp(-150px, -7vw, -72px);
+  bottom: clamp(-120px, -6vw, -72px);
+  width: clamp(300px, 26vw, 440px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .poc-home-meta {
+    left: clamp(112px, 18vw, 150px);
+    right: 24px;
+  }
+
+  .poc-home-title-block {
+    right: 24px;
+    bottom: 126px;
+  }
+
+  .poc-home-open {
+    left: clamp(116px, 19vw, 150px);
+    bottom: 42px;
+  }
+
+  .poc-home-cup {
+    right: -150px;
+    width: 340px;
+  }
+}
+
+@media (max-width: 560px) {
+  .poc-home-meta {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .poc-home-meta-line {
+    width: min(230px, 100%);
+  }
+
+  .poc-home-title-block {
+    left: 104px;
+    right: 18px;
+  }
+
+  .poc-home-title-block h1 {
+    font-size: clamp(3.2rem, 16vw, 4.6rem);
+  }
+
+  .poc-home-cup {
+    right: -184px;
+    width: 326px;
+  }
+}

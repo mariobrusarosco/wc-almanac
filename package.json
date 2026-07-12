@@ -1,0 +1,36 @@
+{
+  "name": "wc-almanac",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/antonio": "5.2.8",
+    "@tanstack/react-query": "5.101.2",
+    "@tanstack/react-query-devtools": "5.101.2",
+    "@tanstack/react-router": "^1.169.2",
+    "@tanstack/react-router-devtools": "^1.166.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.2",
+    "@tanstack/router-plugin": "^1.167.35",
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "msw": "^2.14.6",
+    "tailwindcss": "4.3.2",
+    "typescript": "^5.2.2",
+    "vite": "5.4.21"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+.page-shell {
+  width: min(1280px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.album-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--team-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.page-shell h1,
+.page-shell h2,
+.page-shell h3,
+.page-shell p {
+  margin-top: 0;
+}
+
+.page-shell h1 {
+  margin-bottom: 0;
+  color: var(--ink);
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  line-height: 0.95;
+}
+
+.team-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(72px, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.team-summary div {
+  min-width: 88px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.team-summary dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.team-summary dd {
+  margin: 3px 0 0;
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 850;
+}
+
+.album-section {
+  padding-top: 34px;
+}
+
+.album-screen-state {
+  min-height: 240px;
+}
+
+.album-error-message {
+  max-width: 520px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-weight: 750;
+}
+
+.section-heading {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.bench-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(178px, 1fr));
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #d2c7af;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.42), transparent 22%),
+    #f8f3e4;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 24px, 560px);
+    padding-top: 18px;
+  }
+
+  .album-header {
+    display: grid;
+    align-items: start;
+  }
+
+  .team-summary {
+    width: 100%;
+  }
+
+  .bench-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .team-summary {
+    grid-template-columns: 1fr;
+  }
+}

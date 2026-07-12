@@ -1,0 +1,298 @@
+.team-overview-shell {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 0;
+  overflow: hidden;
+  background: var(--team-overview-surface-color, #ffffff);
+}
+
+.team-overview-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--team-overview-page-background, #f7f4ec);
+  color: var(--team-overview-accent-text, #4d5054);
+  font-family: var(--font-display);
+}
+
+.team-overview-state {
+  display: grid;
+  align-content: center;
+  gap: 16px;
+  padding-left: clamp(104px, 18vw, 220px);
+}
+
+.team-overview-state p,
+.team-overview-state span {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.team-overview-state h1 {
+  margin: 0;
+  font-size: clamp(5.2rem, 7.8vw, 9rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.87;
+  text-transform: uppercase;
+}
+
+.team-overview-spine {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: clamp(72px, 8vw, 112px);
+  overflow: hidden;
+  background: var(--team-overview-spine-color, #f0c847);
+}
+
+.team-overview-spine-badge {
+  position: absolute;
+  left: clamp(-92px, -7vw, -58px);
+  bottom: clamp(72px, 11vw, 150px);
+  width: clamp(190px, 17vw, 280px);
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.team-overview-nav {
+  position: absolute;
+  top: clamp(36px, 5vw, 78px);
+  right: clamp(36px, 5vw, 76px);
+  left: clamp(148px, 13vw, 220px);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  pointer-events: none;
+  font-size: clamp(0.9rem, 1vw, 1.08rem);
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.team-overview-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  padding: 8px;
+  margin: -8px;
+  color: inherit;
+  pointer-events: auto;
+  text-decoration: none;
+}
+
+.team-overview-nav-link:hover,
+.team-overview-nav-link:focus-visible {
+  opacity: 0.68;
+  outline: none;
+}
+
+.team-overview-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin-left: clamp(148px, 13vw, 220px);
+  padding: clamp(112px, 11vw, 166px) clamp(36px, 5vw, 76px) 56px 0;
+}
+
+.team-overview-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(28px, 4vw, 70px);
+  padding-bottom: clamp(16px, 2vw, 22px);
+  border-bottom: 2px solid currentColor;
+}
+
+.team-overview-title-lockup {
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.team-overview-title-lockup h1 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: clamp(5.1rem, 8vw, 9rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.team-overview-badge {
+  width: clamp(50px, 4.8vw, 74px);
+  height: clamp(50px, 4.8vw, 74px);
+  margin-bottom: 4px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 8%, transparent);
+  object-fit: cover;
+}
+
+.team-overview-mode {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.8vw, 22px);
+  padding-bottom: clamp(6px, 1vw, 10px);
+  white-space: nowrap;
+  font-size: clamp(2.05rem, 3.3vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.team-overview-mode span {
+  display: grid;
+  min-height: clamp(58px, 6vw, 86px);
+  place-items: center;
+  padding: 0 clamp(14px, 1.8vw, 24px);
+  border: 2px solid currentColor;
+}
+
+.team-overview-mode i {
+  display: block;
+  width: clamp(44px, 4vw, 74px);
+  height: 2px;
+  background: currentColor;
+}
+
+.team-overview-mode strong {
+  font: inherit;
+}
+
+.team-overview-stat-grid {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) minmax(220px, 2fr) repeat(4, minmax(52px, 0.55fr)) minmax(92px, 1fr) minmax(104px, 1fr);
+  gap: clamp(20px, 3vw, 54px);
+  margin: 0;
+  padding: clamp(24px, 2.8vw, 36px) 0 0;
+}
+
+.team-overview-stat {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.team-overview-stat dt {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.4vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.team-overview-stat dd {
+  margin: 0;
+  font-size: clamp(1rem, 1.1vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.team-overview-title-years {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-overview-title-years li {
+  display: grid;
+  min-width: 34px;
+  min-height: 24px;
+  place-items: center;
+  border: 2px solid currentColor;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media (max-width: 1120px) {
+  .team-overview-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .team-overview-mode {
+    align-self: flex-end;
+    font-size: clamp(1.7rem, 5.6vw, 3.2rem);
+  }
+
+  .team-overview-stat-grid {
+    grid-template-columns: repeat(4, minmax(94px, 1fr));
+  }
+
+  .team-overview-title-stat {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .team-overview-nav {
+    left: clamp(104px, 24vw, 132px);
+  }
+
+  .team-overview-content {
+    margin-left: clamp(104px, 24vw, 132px);
+    padding-top: 96px;
+    padding-right: 24px;
+  }
+
+  .team-overview-nav {
+    right: 24px;
+  }
+
+  .team-overview-title-lockup {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .team-overview-title-lockup h1 {
+    font-size: clamp(3.7rem, 17vw, 5.4rem);
+  }
+
+  .team-overview-mode {
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-self: stretch;
+    white-space: normal;
+  }
+
+  .team-overview-mode i {
+    flex: 1;
+    min-width: 40px;
+    margin-top: 1.1em;
+  }
+
+  .team-overview-stat-grid {
+    grid-template-columns: repeat(2, minmax(98px, 1fr));
+    gap: 24px;
+  }
+
+  .team-overview-title-stat {
+    grid-column: span 2;
+  }
+
+  .team-overview-spine-badge {
+    left: -98px;
+    width: 220px;
+  }
+}

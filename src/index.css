@@ -1,0 +1,15 @@
+@import "@fontsource-variable/antonio/wght.css";
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Antonio Variable", Impact, "Arial Narrow", sans-serif;
+  --color-ink: #4d4d4d;
+  --color-almanac-blue: #88b9c7;
+  --color-paper: #fef4e2;
+}
+
+
+#root {
+  display: flex;
+  min-height: 100svh;
+}
