@@ -15,12 +15,16 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as V0IndexRouteImport } from './routes/v0/index'
 import { Route as V0ContentsRouteImport } from './routes/v0/contents'
 import { Route as AlmanacTableOfContentsRouteImport } from './routes/_almanac/table-of-contents'
+import { Route as AlmanacEditionsRouteImport } from './routes/_almanac/editions'
 import { Route as V0SquadsRouteRouteImport } from './routes/v0/squads/route'
 import { Route as V0EditionsRouteRouteImport } from './routes/v0/editions/route'
+import { Route as AlmanacTeamsRouteRouteImport } from './routes/_almanac/teams/route'
 import { Route as V0SquadsIndexRouteImport } from './routes/v0/squads/index'
 import { Route as V0EditionsIndexRouteImport } from './routes/v0/editions/index'
+import { Route as AlmanacTeamsIndexRouteImport } from './routes/_almanac/teams/index'
 import { Route as V0SquadsTeamCodeRouteImport } from './routes/v0/squads/$teamCode'
 import { Route as V0EditionsYearRouteImport } from './routes/v0/editions/$year'
+import { Route as AlmanacTeamsTeamCodeRouteImport } from './routes/_almanac/teams/$teamCode'
 import { Route as V0YearTeamCodeRouteRouteImport } from './routes/v0/$year/$teamCode/route'
 
 const IndexForTanstartBranchRoute = IndexForTanstartBranchRouteImport.update({
@@ -52,6 +56,11 @@ const AlmanacTableOfContentsRoute = AlmanacTableOfContentsRouteImport.update({
   path: '/table-of-contents',
   getParentRoute: () => AlmanacRouteRoute,
 } as any)
+const AlmanacEditionsRoute = AlmanacEditionsRouteImport.update({
+  id: '/editions',
+  path: '/editions',
+  getParentRoute: () => AlmanacRouteRoute,
+} as any)
 const V0SquadsRouteRoute = V0SquadsRouteRouteImport.update({
   id: '/v0/squads',
   path: '/v0/squads',
@@ -61,6 +70,11 @@ const V0EditionsRouteRoute = V0EditionsRouteRouteImport.update({
   id: '/v0/editions',
   path: '/v0/editions',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AlmanacTeamsRouteRoute = AlmanacTeamsRouteRouteImport.update({
+  id: '/teams',
+  path: '/teams',
+  getParentRoute: () => AlmanacRouteRoute,
 } as any)
 const V0SquadsIndexRoute = V0SquadsIndexRouteImport.update({
   id: '/',
@@ -72,6 +86,11 @@ const V0EditionsIndexRoute = V0EditionsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => V0EditionsRouteRoute,
 } as any)
+const AlmanacTeamsIndexRoute = AlmanacTeamsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AlmanacTeamsRouteRoute,
+} as any)
 const V0SquadsTeamCodeRoute = V0SquadsTeamCodeRouteImport.update({
   id: '/$teamCode',
   path: '/$teamCode',
@@ -82,6 +101,11 @@ const V0EditionsYearRoute = V0EditionsYearRouteImport.update({
   path: '/$year',
   getParentRoute: () => V0EditionsRouteRoute,
 } as any)
+const AlmanacTeamsTeamCodeRoute = AlmanacTeamsTeamCodeRouteImport.update({
+  id: '/$teamCode',
+  path: '/$teamCode',
+  getParentRoute: () => AlmanacTeamsRouteRoute,
+} as any)
 const V0YearTeamCodeRouteRoute = V0YearTeamCodeRouteRouteImport.update({
   id: '/v0/$year/$teamCode',
   path: '/v0/$year/$teamCode',
@@ -91,26 +115,33 @@ const V0YearTeamCodeRouteRoute = V0YearTeamCodeRouteRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/index-for-tanstart-branch': typeof IndexForTanstartBranchRoute
+  '/teams': typeof AlmanacTeamsRouteRouteWithChildren
   '/v0/editions': typeof V0EditionsRouteRouteWithChildren
   '/v0/squads': typeof V0SquadsRouteRouteWithChildren
+  '/editions': typeof AlmanacEditionsRoute
   '/table-of-contents': typeof AlmanacTableOfContentsRoute
   '/v0/contents': typeof V0ContentsRoute
   '/v0/': typeof V0IndexRoute
   '/v0/$year/$teamCode': typeof V0YearTeamCodeRouteRoute
+  '/teams/$teamCode': typeof AlmanacTeamsTeamCodeRoute
   '/v0/editions/$year': typeof V0EditionsYearRoute
   '/v0/squads/$teamCode': typeof V0SquadsTeamCodeRoute
+  '/teams/': typeof AlmanacTeamsIndexRoute
   '/v0/editions/': typeof V0EditionsIndexRoute
   '/v0/squads/': typeof V0SquadsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/index-for-tanstart-branch': typeof IndexForTanstartBranchRoute
+  '/editions': typeof AlmanacEditionsRoute
   '/table-of-contents': typeof AlmanacTableOfContentsRoute
   '/v0/contents': typeof V0ContentsRoute
   '/v0': typeof V0IndexRoute
   '/v0/$year/$teamCode': typeof V0YearTeamCodeRouteRoute
+  '/teams/$teamCode': typeof AlmanacTeamsTeamCodeRoute
   '/v0/editions/$year': typeof V0EditionsYearRoute
   '/v0/squads/$teamCode': typeof V0SquadsTeamCodeRoute
+  '/teams': typeof AlmanacTeamsIndexRoute
   '/v0/editions': typeof V0EditionsIndexRoute
   '/v0/squads': typeof V0SquadsIndexRoute
 }
@@ -119,14 +150,18 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_almanac': typeof AlmanacRouteRouteWithChildren
   '/index-for-tanstart-branch': typeof IndexForTanstartBranchRoute
+  '/_almanac/teams': typeof AlmanacTeamsRouteRouteWithChildren
   '/v0/editions': typeof V0EditionsRouteRouteWithChildren
   '/v0/squads': typeof V0SquadsRouteRouteWithChildren
+  '/_almanac/editions': typeof AlmanacEditionsRoute
   '/_almanac/table-of-contents': typeof AlmanacTableOfContentsRoute
   '/v0/contents': typeof V0ContentsRoute
   '/v0/': typeof V0IndexRoute
   '/v0/$year/$teamCode': typeof V0YearTeamCodeRouteRoute
+  '/_almanac/teams/$teamCode': typeof AlmanacTeamsTeamCodeRoute
   '/v0/editions/$year': typeof V0EditionsYearRoute
   '/v0/squads/$teamCode': typeof V0SquadsTeamCodeRoute
+  '/_almanac/teams/': typeof AlmanacTeamsIndexRoute
   '/v0/editions/': typeof V0EditionsIndexRoute
   '/v0/squads/': typeof V0SquadsIndexRoute
 }
@@ -135,26 +170,33 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/index-for-tanstart-branch'
+    | '/teams'
     | '/v0/editions'
     | '/v0/squads'
+    | '/editions'
     | '/table-of-contents'
     | '/v0/contents'
     | '/v0/'
     | '/v0/$year/$teamCode'
+    | '/teams/$teamCode'
     | '/v0/editions/$year'
     | '/v0/squads/$teamCode'
+    | '/teams/'
     | '/v0/editions/'
     | '/v0/squads/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/index-for-tanstart-branch'
+    | '/editions'
     | '/table-of-contents'
     | '/v0/contents'
     | '/v0'
     | '/v0/$year/$teamCode'
+    | '/teams/$teamCode'
     | '/v0/editions/$year'
     | '/v0/squads/$teamCode'
+    | '/teams'
     | '/v0/editions'
     | '/v0/squads'
   id:
@@ -162,14 +204,18 @@ export interface FileRouteTypes {
     | '/'
     | '/_almanac'
     | '/index-for-tanstart-branch'
+    | '/_almanac/teams'
     | '/v0/editions'
     | '/v0/squads'
+    | '/_almanac/editions'
     | '/_almanac/table-of-contents'
     | '/v0/contents'
     | '/v0/'
     | '/v0/$year/$teamCode'
+    | '/_almanac/teams/$teamCode'
     | '/v0/editions/$year'
     | '/v0/squads/$teamCode'
+    | '/_almanac/teams/'
     | '/v0/editions/'
     | '/v0/squads/'
   fileRoutesById: FileRoutesById
@@ -229,6 +275,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlmanacTableOfContentsRouteImport
       parentRoute: typeof AlmanacRouteRoute
     }
+    '/_almanac/editions': {
+      id: '/_almanac/editions'
+      path: '/editions'
+      fullPath: '/editions'
+      preLoaderRoute: typeof AlmanacEditionsRouteImport
+      parentRoute: typeof AlmanacRouteRoute
+    }
     '/v0/squads': {
       id: '/v0/squads'
       path: '/v0/squads'
@@ -242,6 +295,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/v0/editions'
       preLoaderRoute: typeof V0EditionsRouteRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_almanac/teams': {
+      id: '/_almanac/teams'
+      path: '/teams'
+      fullPath: '/teams'
+      preLoaderRoute: typeof AlmanacTeamsRouteRouteImport
+      parentRoute: typeof AlmanacRouteRoute
     }
     '/v0/squads/': {
       id: '/v0/squads/'
@@ -257,6 +317,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V0EditionsIndexRouteImport
       parentRoute: typeof V0EditionsRouteRoute
     }
+    '/_almanac/teams/': {
+      id: '/_almanac/teams/'
+      path: '/'
+      fullPath: '/teams/'
+      preLoaderRoute: typeof AlmanacTeamsIndexRouteImport
+      parentRoute: typeof AlmanacTeamsRouteRoute
+    }
     '/v0/squads/$teamCode': {
       id: '/v0/squads/$teamCode'
       path: '/$teamCode'
@@ -271,6 +338,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V0EditionsYearRouteImport
       parentRoute: typeof V0EditionsRouteRoute
     }
+    '/_almanac/teams/$teamCode': {
+      id: '/_almanac/teams/$teamCode'
+      path: '/$teamCode'
+      fullPath: '/teams/$teamCode'
+      preLoaderRoute: typeof AlmanacTeamsTeamCodeRouteImport
+      parentRoute: typeof AlmanacTeamsRouteRoute
+    }
     '/v0/$year/$teamCode': {
       id: '/v0/$year/$teamCode'
       path: '/v0/$year/$teamCode'
@@ -281,11 +355,28 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AlmanacTeamsRouteRouteChildren {
+  AlmanacTeamsTeamCodeRoute: typeof AlmanacTeamsTeamCodeRoute
+  AlmanacTeamsIndexRoute: typeof AlmanacTeamsIndexRoute
+}
+
+const AlmanacTeamsRouteRouteChildren: AlmanacTeamsRouteRouteChildren = {
+  AlmanacTeamsTeamCodeRoute: AlmanacTeamsTeamCodeRoute,
+  AlmanacTeamsIndexRoute: AlmanacTeamsIndexRoute,
+}
+
+const AlmanacTeamsRouteRouteWithChildren =
+  AlmanacTeamsRouteRoute._addFileChildren(AlmanacTeamsRouteRouteChildren)
+
 interface AlmanacRouteRouteChildren {
+  AlmanacTeamsRouteRoute: typeof AlmanacTeamsRouteRouteWithChildren
+  AlmanacEditionsRoute: typeof AlmanacEditionsRoute
   AlmanacTableOfContentsRoute: typeof AlmanacTableOfContentsRoute
 }
 
 const AlmanacRouteRouteChildren: AlmanacRouteRouteChildren = {
+  AlmanacTeamsRouteRoute: AlmanacTeamsRouteRouteWithChildren,
+  AlmanacEditionsRoute: AlmanacEditionsRoute,
   AlmanacTableOfContentsRoute: AlmanacTableOfContentsRoute,
 }
 

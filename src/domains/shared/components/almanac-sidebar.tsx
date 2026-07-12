@@ -15,7 +15,7 @@ export const AlmanacSidebar = ({showVersion = false}: {showVersion?: boolean}) =
       <div className='flex flex-col gap-4 font-display items-center'>
      
         <Link
-          className="relative z-10 mt-auto pb-1 text-center text-sm uppercase leading-none text-ink"
+          className="relative z-10 mt-auto pb-1 text-center text-sm uppercase leading-none text-ink hover:text-ink/80 hover:scale-[1.1] transition-all"
           to="/table-of-contents"
         >
           Table of<br />contents

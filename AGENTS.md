@@ -40,3 +40,29 @@ Treat marked feedback as durable project convention. If the feedback is ambiguou
 ## After Coding
 
 Mention any taste-relevant decisions made during the task, especially when a convention was missing and a local precedent was followed or created.
+
+## Response Format
+
+End every non-trivial final response that proposes work with this exact section:
+
+```text
+Summarized List of Actions I'll Take
+1. ...
+2. ...
+3. ...
+```
+
+Keep the list objective and concise. It must state:
+
+- the requested objective;
+- the concrete actions the agent proposes;
+- the files or systems that will be affected;
+- anything explicitly excluded from the scope;
+- any decision that still requires user approval.
+
+The summary must not introduce an action, tool, refactor, dependency, infrastructure change, or
+enforcement mechanism that was not explained in the main response. Optional recommendations must
+be labeled optional and must not be implemented as though they were approved.
+
+When reporting completed work, use `Summarized List of Actions Taken` and list only actions that
+were actually completed.
