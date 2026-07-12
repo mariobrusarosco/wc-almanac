@@ -10,9 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexForTanstartBranchRouteImport } from './routes/index-for-tanstart-branch'
+import { Route as AlmanacRouteRouteImport } from './routes/_almanac/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as V0IndexRouteImport } from './routes/v0/index'
 import { Route as V0ContentsRouteImport } from './routes/v0/contents'
+import { Route as AlmanacTableOfContentsRouteImport } from './routes/_almanac/table-of-contents'
 import { Route as V0SquadsRouteRouteImport } from './routes/v0/squads/route'
 import { Route as V0EditionsRouteRouteImport } from './routes/v0/editions/route'
 import { Route as V0SquadsIndexRouteImport } from './routes/v0/squads/index'
@@ -24,6 +26,10 @@ import { Route as V0YearTeamCodeRouteRouteImport } from './routes/v0/$year/$team
 const IndexForTanstartBranchRoute = IndexForTanstartBranchRouteImport.update({
   id: '/index-for-tanstart-branch',
   path: '/index-for-tanstart-branch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlmanacRouteRoute = AlmanacRouteRouteImport.update({
+  id: '/_almanac',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -40,6 +46,11 @@ const V0ContentsRoute = V0ContentsRouteImport.update({
   id: '/v0/contents',
   path: '/v0/contents',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AlmanacTableOfContentsRoute = AlmanacTableOfContentsRouteImport.update({
+  id: '/table-of-contents',
+  path: '/table-of-contents',
+  getParentRoute: () => AlmanacRouteRoute,
 } as any)
 const V0SquadsRouteRoute = V0SquadsRouteRouteImport.update({
   id: '/v0/squads',
@@ -82,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/index-for-tanstart-branch': typeof IndexForTanstartBranchRoute
   '/v0/editions': typeof V0EditionsRouteRouteWithChildren
   '/v0/squads': typeof V0SquadsRouteRouteWithChildren
+  '/table-of-contents': typeof AlmanacTableOfContentsRoute
   '/v0/contents': typeof V0ContentsRoute
   '/v0/': typeof V0IndexRoute
   '/v0/$year/$teamCode': typeof V0YearTeamCodeRouteRoute
@@ -93,6 +105,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/index-for-tanstart-branch': typeof IndexForTanstartBranchRoute
+  '/table-of-contents': typeof AlmanacTableOfContentsRoute
   '/v0/contents': typeof V0ContentsRoute
   '/v0': typeof V0IndexRoute
   '/v0/$year/$teamCode': typeof V0YearTeamCodeRouteRoute
@@ -104,9 +117,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_almanac': typeof AlmanacRouteRouteWithChildren
   '/index-for-tanstart-branch': typeof IndexForTanstartBranchRoute
   '/v0/editions': typeof V0EditionsRouteRouteWithChildren
   '/v0/squads': typeof V0SquadsRouteRouteWithChildren
+  '/_almanac/table-of-contents': typeof AlmanacTableOfContentsRoute
   '/v0/contents': typeof V0ContentsRoute
   '/v0/': typeof V0IndexRoute
   '/v0/$year/$teamCode': typeof V0YearTeamCodeRouteRoute
@@ -122,6 +137,7 @@ export interface FileRouteTypes {
     | '/index-for-tanstart-branch'
     | '/v0/editions'
     | '/v0/squads'
+    | '/table-of-contents'
     | '/v0/contents'
     | '/v0/'
     | '/v0/$year/$teamCode'
@@ -133,6 +149,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/index-for-tanstart-branch'
+    | '/table-of-contents'
     | '/v0/contents'
     | '/v0'
     | '/v0/$year/$teamCode'
@@ -143,9 +160,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_almanac'
     | '/index-for-tanstart-branch'
     | '/v0/editions'
     | '/v0/squads'
+    | '/_almanac/table-of-contents'
     | '/v0/contents'
     | '/v0/'
     | '/v0/$year/$teamCode'
@@ -157,6 +176,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlmanacRouteRoute: typeof AlmanacRouteRouteWithChildren
   IndexForTanstartBranchRoute: typeof IndexForTanstartBranchRoute
   V0EditionsRouteRoute: typeof V0EditionsRouteRouteWithChildren
   V0SquadsRouteRoute: typeof V0SquadsRouteRouteWithChildren
@@ -172,6 +192,13 @@ declare module '@tanstack/react-router' {
       path: '/index-for-tanstart-branch'
       fullPath: '/index-for-tanstart-branch'
       preLoaderRoute: typeof IndexForTanstartBranchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_almanac': {
+      id: '/_almanac'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AlmanacRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -194,6 +221,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/v0/contents'
       preLoaderRoute: typeof V0ContentsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_almanac/table-of-contents': {
+      id: '/_almanac/table-of-contents'
+      path: '/table-of-contents'
+      fullPath: '/table-of-contents'
+      preLoaderRoute: typeof AlmanacTableOfContentsRouteImport
+      parentRoute: typeof AlmanacRouteRoute
     }
     '/v0/squads': {
       id: '/v0/squads'
@@ -247,6 +281,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AlmanacRouteRouteChildren {
+  AlmanacTableOfContentsRoute: typeof AlmanacTableOfContentsRoute
+}
+
+const AlmanacRouteRouteChildren: AlmanacRouteRouteChildren = {
+  AlmanacTableOfContentsRoute: AlmanacTableOfContentsRoute,
+}
+
+const AlmanacRouteRouteWithChildren = AlmanacRouteRoute._addFileChildren(
+  AlmanacRouteRouteChildren,
+)
+
 interface V0EditionsRouteRouteChildren {
   V0EditionsYearRoute: typeof V0EditionsYearRoute
   V0EditionsIndexRoute: typeof V0EditionsIndexRoute
@@ -277,6 +323,7 @@ const V0SquadsRouteRouteWithChildren = V0SquadsRouteRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlmanacRouteRoute: AlmanacRouteRouteWithChildren,
   IndexForTanstartBranchRoute: IndexForTanstartBranchRoute,
   V0EditionsRouteRoute: V0EditionsRouteRouteWithChildren,
   V0SquadsRouteRoute: V0SquadsRouteRouteWithChildren,

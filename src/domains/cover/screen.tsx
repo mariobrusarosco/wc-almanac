@@ -1,20 +1,20 @@
 import { Link } from '@tanstack/react-router'
-import cupImage from './assets/cup.png'
+import cupImage from '../shared/assets/cup.png'
+import { Logo } from '../shared/components/logo'
 
 export const CoverScreen = () => {
   return (
     <main className="grid grid-cols-[135px_1fr] w-full">
-      <div className="relative bg-paper">
-
-      <span
+      <div className="relative flex items-start justify-center bg-paper pt-14">
+        <Logo hideText />
+        <span
           aria-hidden="true"
           className="
             pointer-events-none absolute inset-y-0 left-[16.5px] z-[2]
             w-[5px] bg-[rgba(57,123,160,0.01)]
             shadow-[12px_0_10px_1px_rgba(0,0,0,0.1)]
           "
-      />
-
+        />
       </div>
 
       <div className="flex flex-col justify-between bg-almanac-blue py-16 px-12">
@@ -25,7 +25,12 @@ export const CoverScreen = () => {
         </div>
 
         <div className='flex justify-between items-end uppercase font-display text-ink'>
-          <div className='cursor-pointer text-3xl font-semibold h-fit px-8 py-6 border-3 border-ink hover:bg-ink hover:text-almanac-blue transition-colors' >open</div>
+          <Link
+            className="h-fit cursor-pointer border-3 border-ink px-6 py-2 text-2xl font-semibold transition-colors hover:bg-ink hover:text-almanac-blue"
+            to="/table-of-contents"
+          >
+            open
+          </Link>
           <div className='flex flex-col tracking-tighter leading-none text-right pr-23'>
             <span className='text-9xl font-bold'>world cup</span>
             <span className='text-8xl font-thin'>almanac</span>
