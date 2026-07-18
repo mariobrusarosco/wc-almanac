@@ -20,11 +20,6 @@ export const TeamScreen = ({ teamCode }: TeamScreenProps) => {
 
       {team && (
         <>
-          <img
-            src={team.flagUrl}
-            alt={`${team.displayName} flag`}
-            className="mb-6 h-20 w-28 object-contain"
-          />
           <h1 className="w-fit border-4 border-ink p-6 text-6xl font-semibold uppercase">
             {team.displayName}
           </h1>

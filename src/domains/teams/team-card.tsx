@@ -1,8 +1,8 @@
 import { Link } from '@tanstack/react-router'
-import type { TeamsResponse } from './schemas'
+import type { TeamSummary } from './schemas'
 
 type TeamCardProps = {
-  team: TeamsResponse['teams'][number]
+  team: TeamSummary
 }
 
 export const TeamCard = ({ team }: TeamCardProps) => {

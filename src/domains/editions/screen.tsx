@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import { EditionCard } from './edition-card'
 import { useEditions } from './use-editions'
 
 export const EditionsScreen = () => {
@@ -6,7 +6,7 @@ export const EditionsScreen = () => {
 
   return (
     <section className="min-h-svh w-full bg-paper px-10 py-12 font-display text-ink">
-      <h1 className="w-fit border-4 border-ink p-6 text-6xl font-semibold uppercase">
+      <h1 className="w-fit text-8xl font-semibold uppercase">
         Editions
       </h1>
 
@@ -17,26 +17,7 @@ export const EditionsScreen = () => {
       {data && (
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {data.editions.map((edition) => (
-            <li key={edition.id} className="border-2 border-ink">
-              <Link
-                to="/editions/$year"
-                params={{ year: String(edition.year) }}
-                className="block p-6"
-              >
-                {edition.host.flagUrl && (
-                  <img
-                    src={edition.host.flagUrl}
-                    alt={`${edition.host.displayName} flag`}
-                    className="mb-5 h-12 w-16 object-contain"
-                  />
-                )}
-                <p className="text-4xl font-semibold">{edition.year}</p>
-                <p className="mt-1 text-lg">
-                  Hosted by {edition.host.displayName}
-                </p>
-                <p className="mt-1 text-lg">Page {edition.pageNumber}</p>
-              </Link>
-            </li>
+            <EditionCard key={edition.id} edition={edition} />
           ))}
         </ul>
       )}

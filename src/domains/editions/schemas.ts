@@ -15,13 +15,14 @@ export const editionsResponseSchema = z.object({
       pageNumber: z.number().int(),
       host: z.object({
         displayName: z.string(),
-        flagUrl: z.string().nullable(),
+        flagUrl: z.string(),
       }),
     }),
   ),
 })
 
 export type EditionsResponse = z.infer<typeof editionsResponseSchema>
+export type EditionSummary = EditionsResponse['editions'][number]
 
 export const editionResponseSchema = z.object({
   edition: z.object({

@@ -15,7 +15,7 @@ export class ApiError extends Error {
   }
 }
 
-export async function apiGet(path: string): Promise<unknown> {
+export async function apiGet<T>(path: string): Promise<T> {
   const response = await fetch(`${API_URL}${path}`, {
     credentials: 'omit',
   })
@@ -26,7 +26,7 @@ export async function apiGet(path: string): Promise<unknown> {
     throw new ApiError(response, body)
   }
 
-  const data: unknown = await response.json()
+  const data: T = await response.json()
 
   return data
 }

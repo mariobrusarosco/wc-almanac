@@ -1,8 +1,6 @@
 import { API } from '../../api'
-import { teamsResponseSchema } from './schemas'
+import type { TeamsResponse } from './schemas'
 
 export const getTeams = async () => {
-  const response = await API.get('/api/almanac/teams')
-
-  return teamsResponseSchema.parse(response)
+  return API.get<TeamsResponse>('/api/almanac/teams')
 }
