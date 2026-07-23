@@ -8,8 +8,12 @@
   --color-paper: #fef4e2;
 }
 
+body {
+  overflow: hidden;
+}
 
 #root {
   display: flex;
   min-height: 100svh;
+  overflow: hidden
 }

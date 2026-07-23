@@ -24,22 +24,13 @@ export const AlmanacSidebar = ({
   logo,
   showVersion = false,
 }: AlmanacSidebarProps) => {
+  console.log({ logo })
   return (
     <aside
       className="relative flex min-h-svh flex-col items-center justify-between overflow-hidden bg-almanac-blue py-8"
       style={{ backgroundColor }}
     >
-      <div className="relative z-10">
-        {logo ? (
-          <img
-            alt={logo.alt}
-            className="h-20 w-16 object-contain"
-            src={logo.src}
-          />
-        ) : (
-          <Logo />
-        )}
-      </div>
+      <Logo />
 
       <div className="flex flex-col items-center gap-4 font-display">
         <Link
@@ -59,14 +50,13 @@ export const AlmanacSidebar = ({
         )}
       </div>
 
-      {!logo && (
-        <img
-          aria-hidden="true"
-          alt=""
-          className="pointer-events-none absolute -right-40 top-[27%] w-[360px] max-w-none"
-          src={cupImage}
-        />
-      )}
+
+      <img
+        aria-hidden="true"
+        alt=""
+        className="pointer-events-none absolute -right-40 top-[27%] w-[360px] max-w-none"
+        src={logo ? logo?.src : cupImage}
+      />
     </aside>
   )
 }

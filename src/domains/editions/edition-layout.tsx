@@ -10,6 +10,8 @@ export const EditionLayout = ({ year }: EditionLayoutProps) => {
   const { data } = useEdition(year)
   const edition = data?.edition
 
+  console.log({ edition })
+
   return (
     <main className="grid min-h-svh w-full grid-cols-[88px_minmax(0,1fr)] bg-paper">
       <AlmanacSidebar
