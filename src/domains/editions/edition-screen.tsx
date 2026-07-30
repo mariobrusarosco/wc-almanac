@@ -53,7 +53,7 @@ export const EditionScreen = ({ year }: EditionScreenProps) => {
           <h1 className="w-fit border-4 border-ink p-6 text-6xl font-semibold uppercase">
             {edition.name}
           </h1>
-          <p className="mt-8 text-3xl">{edition.host.displayName}</p>
+          <p className="mt-8 text-3xl">{edition.displayName}</p>
           <p className="mt-2 text-xl">Page {edition.pageNumber}</p>
 
           <img

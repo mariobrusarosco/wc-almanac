@@ -29,9 +29,7 @@ export const editionResponseSchema = z.object({
     year: z.number().int(),
     name: z.string(),
     pageNumber: z.number().int(),
-    host: z.object({
-      displayName: z.string(),
-    }),
+    displayName: z.string(),
     visualIdentity: z.object({
       logoUrl: z.string(),
       trophyUrl: z.string(),
