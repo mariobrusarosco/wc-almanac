@@ -15,6 +15,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as V0IndexRouteImport } from './routes/v0/index'
 import { Route as V0ContentsRouteImport } from './routes/v0/contents'
 import { Route as AlmanacTableOfContentsRouteImport } from './routes/_almanac/table-of-contents'
+import { Route as AlmanacAboutRouteImport } from './routes/_almanac/about'
 import { Route as V0SquadsRouteRouteImport } from './routes/v0/squads/route'
 import { Route as V0EditionsRouteRouteImport } from './routes/v0/editions/route'
 import { Route as AlmanacTeamsRouteRouteImport } from './routes/_almanac/teams/route'
@@ -56,6 +57,11 @@ const V0ContentsRoute = V0ContentsRouteImport.update({
 const AlmanacTableOfContentsRoute = AlmanacTableOfContentsRouteImport.update({
   id: '/table-of-contents',
   path: '/table-of-contents',
+  getParentRoute: () => AlmanacRouteRoute,
+} as any)
+const AlmanacAboutRoute = AlmanacAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => AlmanacRouteRoute,
 } as any)
 const V0SquadsRouteRoute = V0SquadsRouteRouteImport.update({
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/teams': typeof AlmanacTeamsRouteRouteWithChildren
   '/v0/editions': typeof V0EditionsRouteRouteWithChildren
   '/v0/squads': typeof V0SquadsRouteRouteWithChildren
+  '/about': typeof AlmanacAboutRoute
   '/table-of-contents': typeof AlmanacTableOfContentsRoute
   '/v0/contents': typeof V0ContentsRoute
   '/v0/': typeof V0IndexRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/index-for-tanstart-branch': typeof IndexForTanstartBranchRoute
+  '/about': typeof AlmanacAboutRoute
   '/table-of-contents': typeof AlmanacTableOfContentsRoute
   '/v0/contents': typeof V0ContentsRoute
   '/v0': typeof V0IndexRoute
@@ -169,6 +177,7 @@ export interface FileRoutesById {
   '/_almanac/teams': typeof AlmanacTeamsRouteRouteWithChildren
   '/v0/editions': typeof V0EditionsRouteRouteWithChildren
   '/v0/squads': typeof V0SquadsRouteRouteWithChildren
+  '/_almanac/about': typeof AlmanacAboutRoute
   '/_almanac/table-of-contents': typeof AlmanacTableOfContentsRoute
   '/v0/contents': typeof V0ContentsRoute
   '/v0/': typeof V0IndexRoute
@@ -191,6 +200,7 @@ export interface FileRouteTypes {
     | '/teams'
     | '/v0/editions'
     | '/v0/squads'
+    | '/about'
     | '/table-of-contents'
     | '/v0/contents'
     | '/v0/'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/index-for-tanstart-branch'
+    | '/about'
     | '/table-of-contents'
     | '/v0/contents'
     | '/v0'
@@ -228,6 +239,7 @@ export interface FileRouteTypes {
     | '/_almanac/teams'
     | '/v0/editions'
     | '/v0/squads'
+    | '/_almanac/about'
     | '/_almanac/table-of-contents'
     | '/v0/contents'
     | '/v0/'
@@ -295,6 +307,13 @@ declare module '@tanstack/react-router' {
       path: '/table-of-contents'
       fullPath: '/table-of-contents'
       preLoaderRoute: typeof AlmanacTableOfContentsRouteImport
+      parentRoute: typeof AlmanacRouteRoute
+    }
+    '/_almanac/about': {
+      id: '/_almanac/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AlmanacAboutRouteImport
       parentRoute: typeof AlmanacRouteRoute
     }
     '/v0/squads': {
@@ -420,12 +439,14 @@ const AlmanacTeamsRouteRouteWithChildren =
 interface AlmanacRouteRouteChildren {
   AlmanacEditionsRouteRoute: typeof AlmanacEditionsRouteRouteWithChildren
   AlmanacTeamsRouteRoute: typeof AlmanacTeamsRouteRouteWithChildren
+  AlmanacAboutRoute: typeof AlmanacAboutRoute
   AlmanacTableOfContentsRoute: typeof AlmanacTableOfContentsRoute
 }
 
 const AlmanacRouteRouteChildren: AlmanacRouteRouteChildren = {
   AlmanacEditionsRouteRoute: AlmanacEditionsRouteRouteWithChildren,
   AlmanacTeamsRouteRoute: AlmanacTeamsRouteRouteWithChildren,
+  AlmanacAboutRoute: AlmanacAboutRoute,
   AlmanacTableOfContentsRoute: AlmanacTableOfContentsRoute,
 }
 
