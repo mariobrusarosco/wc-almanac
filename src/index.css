@@ -5,7 +5,8 @@
   --font-display: "Antonio Variable", Impact, "Arial Narrow", sans-serif;
   --color-ink: #4d4d4d;
   --color-almanac-blue: #88b9c7;
-  --color-paper: #fef4e2;
+  --color-paper: #fcfcfa;
+  --color-cover-paper: #fef4e2;
 }
 
 body {

@@ -5,7 +5,7 @@ import { Logo } from '../shared/components/logo'
 export const CoverScreen = () => {
   return (
     <main className="grid grid-cols-[135px_1fr] w-full">
-      <div className="relative flex items-start justify-center bg-paper pt-14">
+      <div className="relative flex items-start justify-center bg-cover-paper pt-14">
         <Logo hideText />
         <span
           aria-hidden="true"

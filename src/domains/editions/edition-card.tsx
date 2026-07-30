@@ -1,4 +1,7 @@
+import { useQueryClient } from '@tanstack/react-query'
 import { Link } from '@tanstack/react-router'
+import { getEdition } from './fetchers'
+import { editionKey } from './keys'
 import type { EditionSummary } from './schemas'
 
 type EditionCardProps = {
@@ -6,27 +9,39 @@ type EditionCardProps = {
 }
 
 export const EditionCard = ({ edition }: EditionCardProps) => {
+  const queryClient = useQueryClient()
+  const year = String(edition.year)
+
+  const prefetchEdition = () => {
+    void queryClient.prefetchQuery({
+      queryKey: editionKey(year),
+      queryFn: () => getEdition(year),
+    })
+  }
+
   return (
-    <li data-ui="edition-card" className="min-[128px]">
+    <li data-ui="edition-card" className="group">
       <Link
         to="/editions/$year"
-        params={{ year: String(edition.year) }}
-        className="flex items-center gap-6 justify-start relative block py-4"
+        params={{ year }}
+        onMouseEnter={prefetchEdition}
+        className="flex gap-6 relative"
       >
-        {edition.host.flagUrl && (
+        {edition.logoUrl && (
           <img
-            src={edition.host.flagUrl}
-            alt={`${edition.host.displayName} flag`}
-            width={42}
-            height={42}
-            loading="lazy"
-            decoding="async"
-            className="rounded-lg"
+          src={edition.logoUrl}
+          alt={`${edition.host.displayName} logo`}
+          loading="lazy"
+          decoding="async"
+          className="rounded-lg w-[58px] h-[126px]"
           />
         )}
-        <p className="text-4xl font-semibold ">{edition.year}</p>
+        <div className='flex flex-col gap-1 uppercase '>
+          <span className="text-3xl font-semibold">{edition.host.displayName}</span>
+          <p className="p-1 border-2 border-ink w-fit text-sm group-hover:bg-ink group-hover:text-paper transition-colors duration-300">{edition.year}</p>
+          <p className="mt-auto text-sm">page {edition.pageNumber}</p>
+        </div>
 
-        <p className="ml-6 font-bold text-xl">{edition.pageNumber}</p>
       </Link>
     </li>
   )

@@ -1,5 +1,5 @@
-import { EditionCard } from './edition-card'
-import { useEditions } from './use-editions'
+import { EditionCard } from '../edition-card'
+import { useEditions } from '../use-editions'
 
 export const EditionsScreen = () => {
   const { data, isError, isPending } = useEditions()
@@ -15,7 +15,7 @@ export const EditionsScreen = () => {
       {isError && <p className="mt-8 text-2xl">Unable to load editions.</p>}
 
       {data && (
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-20 grid gap-24 sm:grid-cols-2 lg:grid-cols-3">
           {data.editions.map((edition) => (
             <EditionCard key={edition.id} edition={edition} />
           ))}

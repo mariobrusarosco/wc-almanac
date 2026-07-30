@@ -12,13 +12,13 @@ function AlmanacLayoutSelector() {
   const teamParams = matchRoute({ to: '/teams/$teamCode' })
   const editionParams = matchRoute({ to: '/editions/$year' })
 
-  if (teamParams) {
-    return <TeamLayout teamCode={teamParams.teamCode} />
-  }
+  // if (teamParams) {
+  //   return <TeamLayout teamCode={teamParams.teamCode} />
+  // }
 
-  if (editionParams) {
-    return <EditionLayout year={editionParams.year} />
-  }
+  // if (editionParams) {
+  //   return <EditionLayout year={editionParams.year} />
+  // }
 
   return <AlmanacLayout />
 }

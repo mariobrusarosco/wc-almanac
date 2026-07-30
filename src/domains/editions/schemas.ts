@@ -15,8 +15,9 @@ export const editionsResponseSchema = z.object({
       pageNumber: z.number().int(),
       host: z.object({
         displayName: z.string(),
-        flagUrl: z.string(),
       }),
+      logoUrl: z.string(),
+
     }),
   ),
 })
