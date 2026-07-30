@@ -13,9 +13,7 @@ export const editionsResponseSchema = z.object({
       year: z.number().int(),
       path: z.string(),
       pageNumber: z.number().int(),
-      host: z.object({
-        displayName: z.string(),
-      }),
+      displayName: z.string(),
       logoUrl: z.string(),
 
     }),

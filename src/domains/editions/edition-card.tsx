@@ -30,14 +30,14 @@ export const EditionCard = ({ edition }: EditionCardProps) => {
         {edition.logoUrl && (
           <img
           src={edition.logoUrl}
-          alt={`${edition.host.displayName} logo`}
+          alt={`${edition.displayName} logo`}
           loading="lazy"
           decoding="async"
           className="rounded-lg w-[58px] h-[126px]"
           />
         )}
         <div className='flex flex-col gap-1 uppercase '>
-          <span className="text-3xl font-semibold">{edition.host.displayName}</span>
+          <span className="text-3xl font-semibold">{edition.displayName}</span>
           <p className="p-1 border-2 border-ink w-fit text-sm group-hover:bg-ink group-hover:text-paper transition-colors duration-300">{edition.year}</p>
           <p className="mt-auto text-sm">page {edition.pageNumber}</p>
         </div>
