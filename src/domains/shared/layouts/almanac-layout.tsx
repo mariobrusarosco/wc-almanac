@@ -6,6 +6,8 @@ export const AlmanacLayout = () => {
     const teamParams = matchRoute({ to: '/teams/$teamCode' })
     const editionParams = matchRoute({ to: '/editions/$year' })
   
+
+  console.log({ teamParams, editionParams})
     
   return (
     <main className="grid min-h-svh w-full grid-cols-[88px_minmax(0,1fr)] bg-paper">

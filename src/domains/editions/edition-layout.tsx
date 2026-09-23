@@ -7,10 +7,10 @@ type EditionLayoutProps = {
 }
 
 export const EditionLayout = ({ year }: EditionLayoutProps) => {
-  const { data } = useEdition(year)
+  const { data, isFetching } = useEdition(year)
   const edition = data?.edition
 
-  console.log({ edition })
+  console.log({ isFetching, edition })
 
   return (
     <main className="grid min-h-svh w-full grid-cols-[88px_minmax(0,1fr)] bg-paper">
@@ -21,7 +21,7 @@ export const EditionLayout = ({ year }: EditionLayoutProps) => {
         logo={
           edition
             ? {
-                alt: `${edition.name} logo`,
+                alt: `${edition.year} World Cup logo`,
                 src: edition.visualIdentity.logoUrl,
               }
             : undefined

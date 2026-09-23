@@ -6,6 +6,12 @@ const editionNavigationItemSchema = z.object({
   hostDisplayName: z.string(),
 })
 
+const editionPlacementSchema = z.object({
+  id: z.string().uuid(),
+  name: z.string(),
+  code: z.string(),
+})
+
 export const editionsResponseSchema = z.object({
   editions: z.array(
     z.object({
@@ -27,15 +33,23 @@ export const editionResponseSchema = z.object({
   edition: z.object({
     id: z.string().uuid(),
     year: z.number().int(),
-    name: z.string(),
+    startDate: z.string(),
+    endDate: z.string(),
+    participantCount: z.number().int(),
     pageNumber: z.number().int(),
     displayName: z.string(),
     visualIdentity: z.object({
       logoUrl: z.string(),
-      trophyUrl: z.string(),
+      trophyUrl: z.string().nullable(),
       accentColor: z.string(),
       accentTextColor: z.string(),
       spineColor: z.string(),
+    }),
+    placements: z.object({
+      first: editionPlacementSchema,
+      second: editionPlacementSchema,
+      third: editionPlacementSchema,
+      fourth: editionPlacementSchema,
     }),
     navigation: z.object({
       previous: editionNavigationItemSchema.nullable(),
