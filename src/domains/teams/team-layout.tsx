@@ -8,18 +8,21 @@ type TeamLayoutProps = {
 
 export const TeamLayout = ({ teamCode }: TeamLayoutProps) => {
   const { data } = useTeams()
-  const team = data?.teams.find(
-    ({ code }) => code === teamCode.toUpperCase(),
+  const team = data?.nationalTeams.find(
+    ({ path }) => path === `/teams/${teamCode}`,
   )
 
   return (
     <main className="grid min-h-svh w-full grid-cols-[88px_minmax(0,1fr)] bg-paper">
       <AlmanacSidebar
+        accentColor={team?.visualIdentity.accentColor}
+        accentTextColor={team?.visualIdentity.accentTextColor}
+        backgroundColor={team?.visualIdentity.spineColor}
         logo={
           team
             ? {
-                alt: `${team.displayName} flag`,
-                src: team.flagUrl,
+                alt: `${team.name} badge`,
+                src: team.visualIdentity.badgeUrl,
               }
             : undefined
         }

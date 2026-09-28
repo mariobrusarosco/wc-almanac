@@ -6,8 +6,8 @@ type TeamScreenProps = {
 
 export const TeamScreen = ({ teamCode }: TeamScreenProps) => {
   const { data, isError, isPending } = useTeams()
-  const team = data?.teams.find(
-    ({ code }) => code === teamCode.toUpperCase(),
+  const team = data?.nationalTeams.find(
+    ({ path }) => path === `/teams/${teamCode}`,
   )
 
   return (
@@ -21,9 +21,11 @@ export const TeamScreen = ({ teamCode }: TeamScreenProps) => {
       {team && (
         <>
           <h1 className="w-fit border-4 border-ink p-6 text-6xl font-semibold uppercase">
-            {team.displayName}
+            {team.name}
           </h1>
-          <p className="mt-8 text-3xl">{team.code}</p>
+          {team.associationAcronym && (
+            <p className="mt-8 text-3xl">{team.associationAcronym}</p>
+          )}
           <p className="mt-2 text-xl">Page {team.pageNumber}</p>
         </>
       )}

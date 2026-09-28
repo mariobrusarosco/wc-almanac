@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../football-platform-api"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../football-plataform-foundation"
+		}
+	],
+	"settings": {}
+}

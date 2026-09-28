@@ -16,7 +16,7 @@ export const TeamsScreen = () => {
 
       {data && (
         <ul className="mt-20 grid gap-y-16 gap-x-6 md:grid-cols-2">
-          {data.teams.map((team) => (
+          {data.nationalTeams.map((team) => (
             <TeamCard key={team.id} team={team} />
           ))}
         </ul>
