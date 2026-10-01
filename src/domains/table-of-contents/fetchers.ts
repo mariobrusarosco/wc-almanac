@@ -1,6 +1,9 @@
 import { API } from '../../api'
+import { contentsResponseSchema } from './schemas'
 import type { ContentsResponse } from './schemas'
 
 export const getContents = async () => {
-  return API.get<ContentsResponse>('/api/almanac/contents')
+  const response = await API.get<ContentsResponse>('/api/almanac/contents')
+
+  return contentsResponseSchema.parse(response)
 }

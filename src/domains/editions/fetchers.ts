@@ -1,10 +1,15 @@
 import { API } from '../../api'
+import { editionResponseSchema, editionsResponseSchema } from './schemas'
 import type { EditionResponse, EditionsResponse } from './schemas'
 
 export const getEditions = async () => {
-  return API.get<EditionsResponse>('/api/almanac/editions')
+  const response = await API.get<EditionsResponse>('/api/almanac/editions')
+
+  return editionsResponseSchema.parse(response)
 }
 
 export const getEdition = async (year: string) => {
-  return API.get<EditionResponse>(`/api/almanac/editions/${year}`)
+  const response = await API.get<EditionResponse>(`/api/almanac/editions/${year}`)
+
+  return editionResponseSchema.parse(response)
 }
